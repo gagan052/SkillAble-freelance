@@ -40,7 +40,7 @@ const connect = async () => {
 app.use(cors({
   origin: ["http://localhost:5173",
      "http://localhost:5174",
-     "https://skillable-freelancer.onrender.com/"
+     "https://skillable-freelancer.onrender.com/api/"
     ],
   methods: "GET, POST, PUT, DELETE, OPTIONS",
   credentials: true,
