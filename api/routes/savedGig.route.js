@@ -8,10 +8,6 @@ import { verifyToken } from "../middleware/jwt.js";
 
 const router = express.Router();
 
-router.get("/test", (req, res) => {
-  res.send("Saved gigs route is working!");
-});
-
 // Save or unsave a gig
 router.put("/toggle/:id", verifyToken, toggleSaveGig);
 
