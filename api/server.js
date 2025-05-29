@@ -11,7 +11,6 @@ import authRoute from "./routes/auth.route.js";
 import followRoute from "./routes/follow.route.js";
 import savedGigRoute from "./routes/savedGig.route.js";
 import storyRoute from "./routes/story.route.js";
-import notificationRoute from "./routes/notification.route.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
