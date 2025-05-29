@@ -38,9 +38,7 @@ const connect = async () => {
 const allowedOrigins = [
   "http://localhost:5173", 
   "http://localhost:5175", 
-  "https://skillable-gagan.onrender.com",
-    "https://skillable-l8gt.onrender.com"
-      "https://skillable-gagan-z3vk.onrender.com"
+    "https://skillable-l8gt.onrender.com",
 "https://skillable-freelancer.onrender.com"
 
     ];
