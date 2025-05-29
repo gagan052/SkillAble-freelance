@@ -9,8 +9,6 @@ import messageRoute from "./routes/message.route.js";
 import reviewRoute from "./routes/review.route.js";
 import authRoute from "./routes/auth.route.js";
 import followRoute from "./routes/follow.route.js";
-import savedGigRoute from "./routes/savedGig.route.js";
-import storyRoute from "./routes/story.route.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
@@ -37,12 +35,35 @@ const connect = async () => {
 // };
 
 // app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+const allowedOrigins = [
+  "http://localhost:5173", 
+  "http://localhost:5175", 
+  "https://skillable-gagan.onrender.com",
+    "https://skillable-l8gt.onrender.com"
+      "https://skillable-gagan-z3vk.onrender.com"
+"https://skillable-freelancer.onrender.com"
+
+    ];
+
 app.use(cors({
-  origin: ["http://localhost:5173", "http://localhost:5175","https://skillable-freelancer.onrender.com"],
+  origin: function (origin, callback) {
+    // allow requests with no origin (like curl, postman)
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = `The CORS policy for this site does not allow access from the specified Origin.`;
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
   methods: "GET, POST, PUT, DELETE, OPTIONS",
   credentials: true,
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
+
+
+app.options('*', cors());
+
 app.use(express.json());
 app.use(cookieParser());
 
@@ -54,8 +75,6 @@ app.use("/api/conversations", conversationRoute);
 app.use("/api/messages", messageRoute);
 app.use("/api/reviews", reviewRoute);
 app.use("/api/follows", followRoute);
-app.use("/api/saved-gigs", savedGigRoute);
-app.use("/api/stories", storyRoute);
 
 app.use((err, req, res, next) => {
   const errorStatus = err.status || 500;
