@@ -20,15 +20,15 @@ function MyGigs() {
   const { isLoading, error, data } = useQuery({
     queryKey: ["myGigs"],
     queryFn: () => {
-      if (!currentUser) return null;
-      return newRequest.get(`/gigs?userId=${currentUser._id}`).then((res) => {
-  const responseData = res.data;
-  if (!Array.isArray(responseData)) {
-    console.error("API did not return an array:", responseData);
-    return [];
-  }
-  return responseData.gigs;
-});
+  if (!currentUser) return null;
+  return newRequest.get(`/gigs?userId=${currentUser._id}`).then((res) => {
+    const responseData = res.data;
+    if (!Array.isArray(responseData.gigs)) {
+      console.error("API did not return an array in gigs:", responseData);
+      return [];
+    }
+    return responseData.gigs;
+  });
 
 
     },
