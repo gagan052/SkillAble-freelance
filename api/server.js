@@ -41,8 +41,8 @@ app.use(cors({
   origin: [
     "http://localhost:5173",
      "http://localhost:5174",
-     "https://skillable-freelancer.onrender.com/api/",
-     "https://new-skillable-frontend.onrender.com/api/",
+     "https://skillable-freelancer.onrender.com",
+     "https://new-skillable-frontend.onrender.com",
     ],
   methods: "GET, POST, PUT, DELETE, OPTIONS",
   credentials: true,
