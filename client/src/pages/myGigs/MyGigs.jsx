@@ -27,7 +27,7 @@ function MyGigs() {
     console.error("API did not return an array:", responseData);
     return [];
   }
-  return responseData;
+  return responseData.gigs;
 });
 
 
