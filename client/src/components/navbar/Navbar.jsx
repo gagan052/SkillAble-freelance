@@ -21,7 +21,7 @@ function Navbar() {
   const { isLoading, error, data } = useQuery({
     queryKey: ["savedGigs"],
     queryFn: () =>
-      newRequest.get("/gigs/saved").then((res) => {
+      newRequest.get("/saved-gigs").then((res) => {
         return res.data;
       }),
     enabled: !!currentUser,
