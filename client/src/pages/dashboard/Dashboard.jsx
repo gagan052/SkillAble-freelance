@@ -98,29 +98,31 @@ function Dashboard() {
   });
 
   // Fetch user data for all saved gigs using useQueries
-  const savedGigsUserQueries = useQueries(
-  (savedGigsData || [])
-    .filter(gig => gig?.gigId?.userId)
-    .map(gig => ({
-      queryKey: ["user", gig.gigId.userId],
-      queryFn: async () => {
-        try {
-          const res = await newRequest.get(`/users/${gig.gigId.userId}`);
-          return {
-            userId: gig.gigId.userId,
-            userData: res.data
-          };
-        } catch (error) {
-          console.error(`Error fetching user ${gig.gigId.userId}:`, error);
-          return {
-            userId: gig.gigId.userId,
-            userData: null
-          };
-        }
-      },
-      enabled: !!gig.gigId?.userId,
-    }))
-);
+  const savedGigsUserQueries = useQueries({
+    queries: (savedGigsData || [])
+      .filter(gig => gig?.gigId?.userId) // Filter out items with missing userId
+      .map(gig => ({
+        queryKey: ["user", gig.gigId.userId],
+        queryFn: async () => {
+          try {
+            const res = await newRequest.get(`/users/${gig.gigId.userId}`);
+            return {
+              userId: gig.gigId.userId,
+              userData: res.data
+            };
+          } catch (error) {
+            console.error(`Error fetching user ${gig.gigId.userId}:`, error);
+            return {
+              userId: gig.gigId.userId,
+              userData: null
+            };
+          }
+        },
+        enabled: !!gig.gigId?.userId,
+      })),
+  });
+
+
 
   // Create a map of userId -> userData for easy lookup
   const userDataMap = useMemo(() => {
