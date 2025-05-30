@@ -22,13 +22,14 @@ function MyGigs() {
     queryFn: () => {
       if (!currentUser) return null;
       return newRequest.get(`/gigs?userId=${currentUser._id}`).then((res) => {
-  const gigs = res.data?.gigs;
-  if (!Array.isArray(gigs)) {
-    console.error("Expected an array of gigs but got:", res.data);
+  const responseData = res.data;
+  if (!Array.isArray(responseData)) {
+    console.error("API did not return an array:", responseData);
     return [];
   }
-  return gigs;
+  return responseData;
 });
+
 
     },
     enabled: !!currentUser,
