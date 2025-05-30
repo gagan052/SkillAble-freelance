@@ -17,7 +17,6 @@ function SavedGigs() {
         
         // Handle different response formats
         const responseData = response.data;
-        console.log("SAVED Gigs data:", response.data);
 
         
         // If response is already an array, return it
@@ -25,7 +24,9 @@ function SavedGigs() {
           console.log("Response is an array with", responseData.length, "items");
           return responseData;
         }
-        
+
+            console.log("SAVED Gigs data:", responseData);
+      
         // If response has a 'gigs' property that is an array, return that
         if (responseData && responseData.gigs && Array.isArray(responseData.gigs)) {
           console.log("Found gigs in response object:", responseData.gigs.length);
