@@ -23,7 +23,7 @@ function MyGigs() {
       if (!currentUser) return null;
       return newRequest.get(`/gigs?userId=${currentUser._id}`).then((res) => {
         // Ensure we always return an array
-        const responseData = res.data;
+        const responseData = res.data.gigs;
         if (!Array.isArray(responseData)) {
           console.error("API did not return an array:", responseData);
           return [];
