@@ -62,7 +62,6 @@ app.get("/api/saved-gigs/test", (req, res) => {
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
-app.use("/api/notifications", notificationRoute);
 app.use("/api/gigs", gigRoute);
 app.use("/api/orders", orderRoute);
 app.use("/api/conversations", conversationRoute);
