@@ -8,7 +8,7 @@ function SavedGigs() {
   const { isLoading, error, data } = useQuery({
     queryKey: ["savedGigs"],
     queryFn: () =>
-      newRequest.get("/savedGigs").then((res) => {
+      newRequest.get("/saved-gigs").then((res) => {
         return res.data;
       }),
     retry: false,
