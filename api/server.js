@@ -14,16 +14,7 @@ import storyRoute from "./routes/story.route.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
-import path from "path";
-import { fileURLToPath } from "url";
-import { dirname } from "path";
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
-app.use(express.static(path.join(__dirname, "build")));
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "build", "index.html"));
-});
 
 const app = express();
 dotenv.config();
