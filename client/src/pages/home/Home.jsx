@@ -59,7 +59,7 @@ function Home() {
             </p>
           </div>
           <div className="item">
-            <video src="./img/Video.mp4" controls />
+            <video src="./img/Video.mp4" play loop controls />
           </div>
         </div>
       </div>
